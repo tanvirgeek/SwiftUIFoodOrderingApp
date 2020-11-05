@@ -13,6 +13,7 @@
 		EB2A2317254F97FA00B2EA77 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB2A2316254F97FA00B2EA77 /* Preview Assets.xcassets */; };
 		EB2A2323254F9B2800B2EA77 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A2322254F9B2800B2EA77 /* Home.swift */; };
 		EB2A2327254F9B4E00B2EA77 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A2326254F9B4E00B2EA77 /* HomeViewModel.swift */; };
+		EBFB615C25538E6D003DDAEC /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFB615B25538E6D003DDAEC /* Menu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		EB2A2318254F97FA00B2EA77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB2A2322254F9B2800B2EA77 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		EB2A2326254F9B4E00B2EA77 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		EBFB615B25538E6D003DDAEC /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				EB2A2322254F9B2800B2EA77 /* Home.swift */,
+				EBFB615B25538E6D003DDAEC /* Menu.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 				EB2A2323254F9B2800B2EA77 /* Home.swift in Sources */,
 				EB2A2310254F97F900B2EA77 /* FoodOrderingAppApp.swift in Sources */,
 				EB2A2327254F9B4E00B2EA77 /* HomeViewModel.swift in Sources */,
+				EBFB615C25538E6D003DDAEC /* Menu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

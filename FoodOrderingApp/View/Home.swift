@@ -16,7 +16,9 @@ struct Home: View {
             VStack(){
                 HStack(spacing: 15){
                     Button {
-                        print("Button Clicked")
+                        withAnimation(.easeIn){
+                            homeVM.showMenu.toggle()
+                        }
                     } label: {
                         Image(systemName: "line.horizontal.3")
                             .font(.title)
@@ -57,6 +59,20 @@ struct Home: View {
                 homeVM.locationManager.delegate = homeVM
                 
             }
+            
+            //Menu
+            HStack{
+                Menu(homeVM: homeVM)
+                    .offset(x: homeVM.showMenu ? 0 : -UIScreen.main.bounds.width/1.6)
+                Spacer(minLength: 0)
+            }.background(
+                Color.black.opacity(homeVM.showMenu ? 0.3 : 0).ignoresSafeArea()
+                    .onTapGesture {
+                        withAnimation(.easeIn){
+                            homeVM.showMenu.toggle()
+                        }
+                    }
+            )
             
             if homeVM.noLocation{
                 Text("Please enable location access to settings to furthur move on")
