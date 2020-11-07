@@ -13,10 +13,14 @@
 		EB2A2317254F97FA00B2EA77 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB2A2316254F97FA00B2EA77 /* Preview Assets.xcassets */; };
 		EB2A2323254F9B2800B2EA77 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A2322254F9B2800B2EA77 /* Home.swift */; };
 		EB2A2327254F9B4E00B2EA77 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2A2326254F9B4E00B2EA77 /* HomeViewModel.swift */; };
+		EB64249F25563C6D0073272F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB64249E25563C6D0073272F /* GoogleService-Info.plist */; };
 		EBFB615C25538E6D003DDAEC /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBFB615B25538E6D003DDAEC /* Menu.swift */; };
+		ED527CC75B57EEB41AFFD4CE /* Pods_FoodOrderingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F9221AECBB3F3610B64FBE /* Pods_FoodOrderingApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AEE0397128AC83CA5192D84D /* Pods-FoodOrderingApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodOrderingApp.release.xcconfig"; path = "Target Support Files/Pods-FoodOrderingApp/Pods-FoodOrderingApp.release.xcconfig"; sourceTree = "<group>"; };
+		E5F9221AECBB3F3610B64FBE /* Pods_FoodOrderingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodOrderingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2A230C254F97F900B2EA77 /* FoodOrderingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodOrderingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2A230F254F97F900B2EA77 /* FoodOrderingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodOrderingAppApp.swift; sourceTree = "<group>"; };
 		EB2A2311254F97F900B2EA77 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -25,7 +29,9 @@
 		EB2A2318254F97FA00B2EA77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB2A2322254F9B2800B2EA77 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		EB2A2326254F9B4E00B2EA77 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		EB64249E25563C6D0073272F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EBFB615B25538E6D003DDAEC /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		FBDB8C21A117670AA75425DE /* Pods-FoodOrderingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodOrderingApp.debug.xcconfig"; path = "Target Support Files/Pods-FoodOrderingApp/Pods-FoodOrderingApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +39,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED527CC75B57EEB41AFFD4CE /* Pods_FoodOrderingApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF1F0CFE436348F49E968F71 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FBDB8C21A117670AA75425DE /* Pods-FoodOrderingApp.debug.xcconfig */,
+				AEE0397128AC83CA5192D84D /* Pods-FoodOrderingApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E76A12AEF19E2CD4FDBB8305 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5F9221AECBB3F3610B64FBE /* Pods_FoodOrderingApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EB2A2303254F97F900B2EA77 = {
 			isa = PBXGroup;
 			children = (
 				EB2A230E254F97F900B2EA77 /* FoodOrderingApp */,
 				EB2A230D254F97F900B2EA77 /* Products */,
+				DF1F0CFE436348F49E968F71 /* Pods */,
+				E76A12AEF19E2CD4FDBB8305 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +85,7 @@
 		EB2A230E254F97F900B2EA77 /* FoodOrderingApp */ = {
 			isa = PBXGroup;
 			children = (
+				EB64249E25563C6D0073272F /* GoogleService-Info.plist */,
 				EB2A2321254F9AE600B2EA77 /* ViewModel */,
 				EB2A2320254F9ADD00B2EA77 /* Model */,
 				EB2A231F254F9AD400B2EA77 /* View */,
@@ -109,9 +137,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB2A231B254F97FA00B2EA77 /* Build configuration list for PBXNativeTarget "FoodOrderingApp" */;
 			buildPhases = (
+				71FA72C90EEB59B9610A2334 /* [CP] Check Pods Manifest.lock */,
 				EB2A2308254F97F900B2EA77 /* Sources */,
 				EB2A2309254F97F900B2EA77 /* Frameworks */,
 				EB2A230A254F97F900B2EA77 /* Resources */,
+				CD5B6D58D16FEE5B851FD9D9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -161,10 +191,53 @@
 			files = (
 				EB2A2317254F97FA00B2EA77 /* Preview Assets.xcassets in Resources */,
 				EB2A2314254F97FA00B2EA77 /* Assets.xcassets in Resources */,
+				EB64249F25563C6D0073272F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		71FA72C90EEB59B9610A2334 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FoodOrderingApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CD5B6D58D16FEE5B851FD9D9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodOrderingApp/Pods-FoodOrderingApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FoodOrderingApp/Pods-FoodOrderingApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FoodOrderingApp/Pods-FoodOrderingApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EB2A2308254F97F900B2EA77 /* Sources */ = {
@@ -300,6 +373,7 @@
 		};
 		EB2A231C254F97FA00B2EA77 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBDB8C21A117670AA75425DE /* Pods-FoodOrderingApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -322,6 +396,7 @@
 		};
 		EB2A231D254F97FA00B2EA77 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AEE0397128AC83CA5192D84D /* Pods-FoodOrderingApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

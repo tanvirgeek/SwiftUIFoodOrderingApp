@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreLocation
+import Firebase
 
 class HomeViewModel:NSObject, ObservableObject, CLLocationManagerDelegate{
     
@@ -40,6 +41,7 @@ class HomeViewModel:NSObject, ObservableObject, CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.userLocation = locations.last
         self.extractLocation()
+        self.login()
     }
     func extractLocation(){
         CLGeocoder().reverseGeocodeLocation(self.userLocation){ res , error in
@@ -52,6 +54,15 @@ class HomeViewModel:NSObject, ObservableObject, CLLocationManagerDelegate{
             
             self.userAddress = address
             
+        }
+    }
+    func login(){
+        Auth.auth().signInAnonymously { (res, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+                return
+            }
+            print("Success = \(res!.user.uid)")
         }
     }
     
