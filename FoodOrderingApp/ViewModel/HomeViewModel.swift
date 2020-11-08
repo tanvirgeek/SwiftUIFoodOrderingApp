@@ -16,7 +16,8 @@ class HomeViewModel:NSObject, ObservableObject, CLLocationManagerDelegate{
     @Published var userLocation:CLLocation!
     @Published var userAddress = ""
     @Published var noLocation = false
-    @Published var showMenu = false 
+    @Published var showMenu = false
+    @Published var items:[Item] = []
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
@@ -56,6 +57,7 @@ class HomeViewModel:NSObject, ObservableObject, CLLocationManagerDelegate{
             
         }
     }
+    
     func login(){
         Auth.auth().signInAnonymously { (res, error) in
             if error != nil {
@@ -63,6 +65,25 @@ class HomeViewModel:NSObject, ObservableObject, CLLocationManagerDelegate{
                 return
             }
             print("Success = \(res!.user.uid)")
+            self.fetchData()
+        }
+    }
+    
+    //fetchData
+    func fetchData(){
+        let db = Firestore.firestore()
+        db.collection("items").getDocuments { (snap, error) in
+            guard let itemData = snap else {return}
+            self.items = itemData.documents.compactMap({ (doc) -> Item? in
+                let id = doc.documentID
+                let itemCost = doc.get("item_cost") as! NSNumber
+                let itemDetailes = doc.get("item_details") as! String
+                let itemImage = doc.get("item_image") as! String
+                let itemName = doc.get("item_name") as! String
+                let itemRating = doc.get("item_rating") as! String
+                
+                return Item(id: id, item_cost: itemCost, item_details: itemDetailes, item_image: itemImage, item_name: itemName, item_rating: itemRating)
+            })
         }
     }
     

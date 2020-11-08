@@ -14,6 +14,7 @@ struct Home: View {
         ZStack{
             
             VStack(){
+                //Top Bar
                 HStack(spacing: 15){
                     Button {
                         withAnimation(.easeIn){
@@ -36,7 +37,7 @@ struct Home: View {
                 .padding([.horizontal,.top])
                 
                 Divider()
-                
+                //Search Bar
                 HStack(){
                     TextField("Search", text:$homeVM.search)
                     if(homeVM.search != ""){
@@ -53,6 +54,17 @@ struct Home: View {
                 .padding(.top,10)
                 
                 Divider()
+                
+                //Data from Firebase
+                ScrollView(){
+                    VStack(spacing:25){
+                        ForEach(homeVM.items){ item in
+                            ItemCard(item: item)
+                                .frame(width: UIScreen.main.bounds.width-30)
+                        }
+                    }
+                }
+                
                 Spacer()
             }
             .onAppear {
