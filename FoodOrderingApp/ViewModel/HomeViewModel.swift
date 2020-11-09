@@ -8,6 +8,7 @@
 import Foundation
 import CoreLocation
 import Firebase
+import SwiftUI
 
 class HomeViewModel:NSObject, ObservableObject, CLLocationManagerDelegate{
     
@@ -18,6 +19,7 @@ class HomeViewModel:NSObject, ObservableObject, CLLocationManagerDelegate{
     @Published var noLocation = false
     @Published var showMenu = false
     @Published var items:[Item] = []
+    @Published var filtered:[Item] = []
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
@@ -84,6 +86,15 @@ class HomeViewModel:NSObject, ObservableObject, CLLocationManagerDelegate{
                 
                 return Item(id: id, item_cost: itemCost, item_details: itemDetailes, item_image: itemImage, item_name: itemName, item_rating: itemRating)
             })
+            self.filtered = self.items
+        }
+        
+    }
+    func filterData(){
+        withAnimation(.linear){
+            self.filtered = self.items.filter{
+                return $0.item_name.lowercased().contains(self.search.lowercased())
+            }
         }
     }
     

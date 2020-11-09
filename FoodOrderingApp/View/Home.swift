@@ -58,9 +58,30 @@ struct Home: View {
                 //Data from Firebase
                 ScrollView(){
                     VStack(spacing:25){
-                        ForEach(homeVM.items){ item in
-                            ItemCard(item: item)
-                                .frame(width: UIScreen.main.bounds.width-30)
+                        ForEach(homeVM.filtered){ item in
+                            ZStack(alignment:Alignment(horizontal: .center, vertical: .top)){
+                                ItemCard(item: item)
+                                    
+                                HStack(){
+                                    Text("Free Delivary")
+                                        .foregroundColor(.white)
+                                        .padding(.vertical,10)
+                                        .padding(.horizontal)
+                                        .background(Color.pink)
+                                    Spacer()
+                                    Button(action:{},label:{
+                                        Image(systemName: "plus")
+                                            .foregroundColor(.white)
+                                            .padding(10)
+                                            .background(Color.pink)
+                                            .clipShape(Circle())
+                                    })
+                                    
+                                }.padding(.trailing,10)
+                                .padding(.top,10)
+                               
+                            }.frame(width: UIScreen.main.bounds.width-30)
+                            
                         }
                     }
                 }
@@ -70,6 +91,17 @@ struct Home: View {
             .onAppear {
                 homeVM.locationManager.delegate = homeVM
                 
+            }.onChange(of: homeVM.search) { (value) in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    if value == homeVM.search && homeVM.search != ""{
+                        homeVM.filterData()
+                    }
+                    if(homeVM.search == ""){
+                        withAnimation(.linear){
+                            homeVM.filtered = homeVM.items
+                        }
+                    }
+                }
             }
             
             //Menu
