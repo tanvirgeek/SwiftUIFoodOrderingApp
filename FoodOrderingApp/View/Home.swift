@@ -61,7 +61,7 @@ struct Home: View {
                         ForEach(homeVM.filtered){ item in
                             ZStack(alignment:Alignment(horizontal: .center, vertical: .top)){
                                 ItemCard(item: item)
-                                    
+                                
                                 HStack(){
                                     Text("Free Delivary")
                                         .foregroundColor(.white)
@@ -69,17 +69,19 @@ struct Home: View {
                                         .padding(.horizontal)
                                         .background(Color.pink)
                                     Spacer()
-                                    Button(action:{},label:{
-                                        Image(systemName: "plus")
+                                    Button(action:{
+                                        homeVM.addToCart(item: item)
+                                    },label:{
+                                        Image(systemName: !item.isAdded ? "plus" : "checkmark")
                                             .foregroundColor(.white)
                                             .padding(10)
-                                            .background(Color.pink)
+                                            .background(!item.isAdded ? Color.pink : Color.green)
                                             .clipShape(Circle())
                                     })
                                     
                                 }.padding(.trailing,10)
                                 .padding(.top,10)
-                               
+                                
                             }.frame(width: UIScreen.main.bounds.width-30)
                             
                         }

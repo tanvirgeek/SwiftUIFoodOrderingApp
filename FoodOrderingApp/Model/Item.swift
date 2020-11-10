@@ -15,5 +15,6 @@ struct Item:Identifiable {
     var item_image:String
     var item_name:String
     var item_rating:String
+    var isAdded:Bool = false
 }
 

@@ -20,6 +20,7 @@ class HomeViewModel:NSObject, ObservableObject, CLLocationManagerDelegate{
     @Published var showMenu = false
     @Published var items:[Item] = []
     @Published var filtered:[Item] = []
+    @Published var cartData:[Cart] = []
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
@@ -98,4 +99,28 @@ class HomeViewModel:NSObject, ObservableObject, CLLocationManagerDelegate{
         }
     }
     
+    func addToCart(item:Item){
+        
+        //
+        self.items[getIndex(item: item, isCartIndex: false)].isAdded.toggle()
+        self.filtered[getIndex(item: item, isCartIndex: false)].isAdded.toggle()
+        
+        if item.isAdded{
+            self.cartData.remove(at: getIndex(item: item, isCartIndex: true))
+            return
+        }
+        //else adding
+        self.cartData.append(Cart(item: item, quantity: 1))
+    }
+    
+    func getIndex(item:Item, isCartIndex:Bool)->Int{
+        let index = self.items.firstIndex { (item1) -> Bool in
+            return item1.id == item.id
+        } ?? 0
+        
+        let cartIndex = self.cartData.firstIndex { (item1) -> Bool in
+            return item.id == item1.item.id
+        } ?? 0
+        return isCartIndex ? cartIndex : index
+    }
 }
