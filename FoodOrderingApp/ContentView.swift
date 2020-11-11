@@ -11,9 +11,9 @@ struct ContentView: View {
     var body: some View {
         NavigationView(){
             Home()
-        }.navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
-        
+                .navigationBarHidden(true)
+                .navigationBarBackButtonHidden(true)
+        }
     }
 }
 
