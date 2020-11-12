@@ -55,38 +55,45 @@ struct Home: View {
                 
                 Divider()
                 
-                //Data from Firebase
-                ScrollView(){
-                    VStack(spacing:25){
-                        ForEach(homeVM.filtered){ item in
-                            ZStack(alignment:Alignment(horizontal: .center, vertical: .top)){
-                                ItemCard(item: item)
-                                
-                                HStack(){
-                                    Text("Free Delivary")
-                                        .foregroundColor(.white)
-                                        .padding(.vertical,10)
-                                        .padding(.horizontal)
-                                        .background(Color.pink)
-                                    Spacer()
-                                    Button(action:{
-                                        homeVM.addToCart(item: item)
-                                    },label:{
-                                        Image(systemName: !item.isAdded ? "plus" : "checkmark")
-                                            .foregroundColor(.white)
-                                            .padding(10)
-                                            .background(!item.isAdded ? Color.pink : Color.green)
-                                            .clipShape(Circle())
-                                    })
+                //food Items from Firebase
+                if homeVM.items.isEmpty{
+                    Spacer()
+                    ProgressView()
+                    Spacer()
+                }else{
+                    ScrollView(){
+                        VStack(spacing:25){
+                            ForEach(homeVM.filtered){ item in
+                                ZStack(alignment:Alignment(horizontal: .center, vertical: .top)){
+                                    ItemCard(item: item)
                                     
-                                }.padding(.trailing,10)
-                                .padding(.top,10)
+                                    HStack(){
+                                        Text("Free Delivary")
+                                            .foregroundColor(.white)
+                                            .padding(.vertical,10)
+                                            .padding(.horizontal)
+                                            .background(Color.pink)
+                                        Spacer()
+                                        Button(action:{
+                                            homeVM.addToCart(item: item)
+                                        },label:{
+                                            Image(systemName: !item.isAdded ? "plus" : "checkmark")
+                                                .foregroundColor(.white)
+                                                .padding(10)
+                                                .background(!item.isAdded ? Color.pink : Color.green)
+                                                .clipShape(Circle())
+                                        })
+                                        
+                                    }.padding(.trailing,10)
+                                    .padding(.top,10)
+                                    
+                                }.frame(width: UIScreen.main.bounds.width-30)
                                 
-                            }.frame(width: UIScreen.main.bounds.width-30)
-                            
+                            }
                         }
                     }
                 }
+                
                 
                 Spacer()
             }

@@ -33,81 +33,7 @@ struct CartView: View {
             }.padding()
             
             //Show cart Item in a scroll view
-            ScrollView(.vertical, showsIndicators:false){
-                LazyVStack(){
-                    ForEach(homeVM.cartData){ cartItem in
-                        HStack(){
-                            WebImage(url: URL(string: cartItem.item.item_image))
-                                .resizable()
-                                .aspectRatio(contentMode: ContentMode.fill)
-                                .frame(width:130, height:130)
-                                .cornerRadius(10)
-                                .clipped()
-                            VStack(spacing:8){
-                                Text(cartItem.item.item_name)
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.black)
-                                Text(cartItem.item.item_details)
-                                    .fontWeight(.semibold)
-                                    .foregroundColor(.gray)
-                                    .lineLimit(2)
-                                HStack(){
-                                    Text("230")//getPrice
-                                        .font(.title2)
-                                        .fontWeight(.heavy)
-                                        .foregroundColor(.black)
-                                    Spacer(minLength: 0)
-                                    
-                                    Button(action:{}, label:{
-                                        Image(systemName: "minus")
-                                            .font(.system(size: 16,weight:.heavy))
-                                            .foregroundColor(.black)
-                                    })
-                                    
-                                    Text("\(cartItem.quantity)")
-                                        .fontWeight(.bold)
-                                        .font(.title)
-                                        .foregroundColor(.black)
-                                        .padding(.vertical, 5)
-                                        .padding(.horizontal,10)
-                                        .background(Color.black.opacity(0.06))
-                                        
-                                    Button(action:{}, label:{
-                                        Image(systemName: "plus")
-                                            .font(.system(size: 16,weight:.heavy))
-                                            .foregroundColor(.black)
-                                    })
-                                }
-                            }
-                          
-                        }
-                        .contentShape(RoundedRectangle(cornerRadius: 15))
-                        .contextMenu{
-                            Button(action:{
-                                let cartIndex = homeVM.cartData.firstIndex { (c) -> Bool in
-                                    return c.id == cartItem.id
-                                } ?? 0
-                                homeVM.cartData.remove(at: cartIndex)
-                                
-                                let itemIndex = homeVM.items.firstIndex { (c) -> Bool in
-                                    return c.id == cartItem.item.id
-                                } ?? 0
-                                homeVM.items[itemIndex].isAdded = false
-                                
-                                let filterIndex = homeVM.filtered.firstIndex { (c) -> Bool in
-                                    return c.id == cartItem.item.id
-                                } ?? 0
-                                homeVM.filtered[filterIndex].isAdded = false
-                            }, label:{
-                                Text("Remove")
-                                    .fontWeight(.heavy)
-                            })
-                        }
-                        
-                        
-                    }
-                }
-            }.padding()
+            CartScrollView(homeVM:homeVM)
             
             //Bottom View
             VStack(){
@@ -115,13 +41,17 @@ struct CartView: View {
                     Text("Total")
                         .fontWeight(.heavy)
                         .foregroundColor(.gray)
-                    Text("2345")
+                    Text(String(format: "%.1f", homeVM.getTotalPrice()))
                         .font(.title)
                         .foregroundColor(.black)
                         .fontWeight(.heavy)
                 }.padding()
-                Button(action:{}, label:{
-                    Text("Check Out")
+                Button(action:{
+                    //Push orderdata to firebase
+                    homeVM.updateOrder()
+                    
+                }, label:{
+                    Text( homeVM.ordered ? "Delete Order" : "Give Order")
                         .font(.title2)
                         .fontWeight(.heavy)
                         .foregroundColor(.white)
