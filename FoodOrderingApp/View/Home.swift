@@ -25,7 +25,7 @@ struct Home: View {
                             .font(.title)
                             .foregroundColor(.pink)
                     }
-                    Text( homeVM.userLocation == nil ? "Locating...":"Deliver to")
+                    Text( homeVM.userLocation == nil ? "LOCATING..":"Deliver to")
                         .foregroundColor(.black)
                     
                     Text(homeVM.userAddress)
